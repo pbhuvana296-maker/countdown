@@ -1,0 +1,758 @@
+
+/* =====================================
+   GLOBAL RESET
+===================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
+  background: #b5cba8;
+}
+
+/* =====================================
+   MAIN CONTAINER
+===================================== */
+
+.main-container {
+  width: 100%;
+  min-height: 100vh;
+
+  background: linear-gradient(
+    135deg,
+    #c5d5b8,
+    #9fbd8d
+  );
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Background Glow */
+
+.main-container::before {
+  content: "";
+
+  position: absolute;
+  width: 350px;
+  height: 350px;
+
+  background: #00cfff;
+  filter: blur(180px);
+  opacity: 0.12;
+
+  top: -100px;
+  left: -100px;
+
+  pointer-events: none;
+}
+
+.main-container::after {
+  content: "";
+
+  position: absolute;
+  width: 350px;
+  height: 350px;
+
+  background: #a855f7;
+  filter: blur(180px);
+  opacity: 0.12;
+
+  bottom: -100px;
+  right: -100px;
+
+  pointer-events: none;
+}
+
+/* =====================================
+   MAIN CARDS
+===================================== */
+
+.loader-card,
+.coming-card {
+
+  width: 100%;
+  max-width: 500px;
+  min-height: 470px;
+
+  background: #030d20;
+
+  border: 1px solid rgba(
+    0,
+    200,
+    255,
+    0.3
+  );
+
+  box-shadow:
+    0 0 30px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(0, 150, 255, 0.12);
+
+  padding: 35px 25px;
+
+  text-align: center;
+
+  position: relative;
+  z-index: 2;
+
+  overflow: hidden;
+}
+
+/* Card Border Glow */
+
+.loader-card::before,
+.coming-card::before {
+
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  border-radius: inherit;
+
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(0, 217, 255, 0.08),
+    transparent,
+    rgba(180, 70, 255, 0.08),
+    transparent
+  );
+
+  background-size: 200% 200%;
+
+  animation: borderGlow 5s linear infinite;
+
+  pointer-events: none;
+}
+
+@keyframes borderGlow {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+/* =====================================
+   HEADER
+===================================== */
+
+.heading {
+
+  font-size: 24px;
+  font-weight: bold;
+
+  letter-spacing: 5px;
+
+  background: linear-gradient(
+    90deg,
+    #00d9ff,
+    #ffffff,
+    #d66aff
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+  filter: drop-shadow(
+    0 0 8px #00aaff
+  );
+
+  position: relative;
+  z-index: 2;
+}
+
+.subtitle {
+
+  font-size: 9px;
+
+  color: #7d8eb5;
+
+  letter-spacing: 3px;
+
+  margin-top: 10px;
+  margin-bottom: 30px;
+
+  position: relative;
+  z-index: 2;
+}
+
+/* =====================================
+   LOADER BOX
+===================================== */
+
+.loader-box {
+
+  height: 300px;
+  width: 100%;
+
+  border: 1px solid #175c89;
+
+  border-radius: 17px;
+
+  box-shadow:
+    0 0 15px rgba(0, 174, 255, 0.3),
+    0 0 30px rgba(130, 50, 255, 0.08),
+    inset 0 0 20px rgba(0, 174, 255, 0.08);
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+
+  overflow: hidden;
+
+  z-index: 2;
+}
+
+/* Loader Background Glow */
+
+.loader-box::before {
+
+  content: "";
+
+  position: absolute;
+
+  width: 180px;
+  height: 180px;
+
+  background: #00cfff;
+
+  filter: blur(100px);
+
+  opacity: 0.12;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+/* =====================================
+   CIRCULAR LOADER
+===================================== */
+
+.circle-wrapper {
+
+  width: 165px;
+  height: 165px;
+
+  position: relative;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  margin-bottom: 15px;
+
+  z-index: 2;
+}
+
+/* COMMON CIRCLE */
+
+.outer-circle,
+.middle-circle,
+.inner-circle {
+
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+/* OUTER CIRCLE */
+
+.outer-circle {
+
+  width: 145px;
+  height: 145px;
+
+  border: 3px solid transparent;
+
+  border-top-color: #00d9ff;
+  border-right-color: #c54aff;
+
+  filter: drop-shadow(
+    0 0 10px #00cfff
+  );
+}
+
+/* MIDDLE CIRCLE */
+
+.middle-circle {
+
+  width: 118px;
+  height: 118px;
+
+  border: 3px solid transparent;
+
+  border-bottom-color: #00d9ff;
+  border-left-color: #b34cff;
+
+  filter: drop-shadow(
+    0 0 10px #9e35ff
+  );
+}
+
+/* INNER CIRCLE */
+
+.inner-circle {
+
+  width: 88px;
+  height: 88px;
+
+  border: 2px solid #00bfff;
+
+  background: rgba(
+    0,
+    100,
+    180,
+    0.08
+  );
+
+  box-shadow:
+    0 0 12px #00cfff,
+    inset 0 0 15px rgba(0, 217, 255, 0.2);
+}
+
+/* =====================================
+   COUNTDOWN NUMBER
+===================================== */
+
+.count-number {
+
+  color: white;
+
+  font-size: 48px;
+
+  font-weight: bold;
+
+  position: absolute;
+
+  z-index: 3;
+
+  text-shadow:
+    0 0 8px #00d9ff,
+    0 0 25px #00d9ff,
+    0 0 40px #007bff;
+
+  user-select: none;
+}
+
+/* =====================================
+   ORBIT DOT
+===================================== */
+
+.orbit-dot {
+
+  position: absolute;
+
+  width: 10px;
+  height: 10px;
+
+  background: #00eaff;
+
+  border-radius: 50%;
+
+  top: 10px;
+  left: 77px;
+
+  transform-origin: 5px 72px;
+
+  box-shadow:
+    0 0 8px #00d9ff,
+    0 0 18px #00d9ff,
+    0 0 30px #008cff;
+
+  z-index: 4;
+}
+
+/* =====================================
+   STATUS TEXT
+===================================== */
+
+.status-text {
+
+  color: #758ba9;
+
+  font-size: 9px;
+
+  letter-spacing: 2px;
+
+  margin-bottom: 18px;
+
+  text-shadow: 0 0 8px #00aaff;
+
+  position: relative;
+  z-index: 3;
+}
+
+/* =====================================
+   BUTTON CONTAINER
+===================================== */
+
+.buttons {
+
+  display: flex;
+
+  gap: 12px;
+
+  justify-content: center;
+
+  align-items: center;
+
+  position: relative;
+  z-index: 3;
+}
+
+/* COMMON BUTTON */
+
+.buttons button {
+
+  padding: 10px 20px;
+
+  font-size: 11px;
+
+  font-weight: bold;
+
+  letter-spacing: 1px;
+
+  background: transparent;
+
+  border-radius: 6px;
+
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+
+  outline: none;
+}
+
+/* PAUSE BUTTON */
+
+.pause-btn {
+
+  color: #00d9ff;
+
+  border: 1px solid #008fc9;
+
+  box-shadow:
+    0 0 8px rgba(0, 217, 255, 0.15);
+}
+
+.pause-btn:hover {
+
+  background: rgba(0, 217, 255, 0.12);
+
+  color: white;
+
+  box-shadow:
+    0 0 10px #00d9ff,
+    0 0 25px rgba(0, 217, 255, 0.5);
+}
+
+/* RESET BUTTON */
+
+.reset-btn {
+
+  color: #d17aff;
+
+  border: 1px solid #873bc0;
+
+  box-shadow:
+    0 0 8px rgba(180, 70, 255, 0.15);
+}
+
+.reset-btn:hover {
+
+  background: rgba(180, 70, 255, 0.12);
+
+  color: white;
+
+  box-shadow:
+    0 0 10px #b44cff,
+    0 0 25px rgba(180, 70, 255, 0.5);
+}
+
+/* =====================================
+   COMING SOON CARD
+===================================== */
+
+.coming-card {
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  position: relative;
+
+  z-index: 2;
+}
+
+/* COMING SOON TITLE */
+
+.coming-title {
+
+  font-size: 43px;
+
+  line-height: 1.5;
+
+  font-weight: bold;
+
+  letter-spacing: 9px;
+
+  color: #ffffff;
+
+  text-shadow:
+    0 0 8px #00d9ff,
+    0 0 20px #00d9ff,
+    0 0 40px #008cff;
+
+  animation: neonPulse 2s infinite alternate;
+
+  position: relative;
+  z-index: 2;
+}
+
+/* =====================================
+   COMING SOON DESCRIPTION
+===================================== */
+
+.description {
+
+  color: #8b9bb3;
+
+  font-size: 13px;
+
+  line-height: 1.7;
+
+  margin: 25px 0;
+
+  letter-spacing: 0.3px;
+
+  position: relative;
+  z-index: 2;
+}
+
+/* =====================================
+   INITIALIZE BUTTON
+===================================== */
+
+.initialize-btn {
+
+  padding: 12px 22px;
+
+  color: #d58aff;
+
+  border: 1px solid #a34be1;
+
+  border-radius: 6px;
+
+  background: transparent;
+
+  font-size: 11px;
+
+  font-weight: bold;
+
+  letter-spacing: 1px;
+
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+
+  box-shadow:
+    0 0 12px rgba(170, 60, 255, 0.25);
+
+  position: relative;
+  z-index: 2;
+}
+
+.initialize-btn:hover {
+
+  color: white;
+
+  background: rgba(163, 75, 225, 0.15);
+
+  box-shadow:
+    0 0 10px #b44cff,
+    0 0 25px #b44cff,
+    0 0 40px rgba(180, 76, 255, 0.5);
+}
+
+/* =====================================
+   NEON ANIMATIONS
+===================================== */
+
+@keyframes neonPulse {
+
+  from {
+
+    text-shadow:
+      0 0 5px #00d9ff,
+      0 0 12px #00d9ff;
+
+  }
+
+  to {
+
+    text-shadow:
+      0 0 12px #00d9ff,
+      0 0 30px #00d9ff,
+      0 0 45px #b44cff;
+
+  }
+}
+
+/* =====================================
+   RESPONSIVE DESIGN
+===================================== */
+
+@media (max-width: 500px) {
+
+  .loader-card,
+  .coming-card {
+
+    min-height: 420px;
+
+    padding: 25px 15px;
+
+  }
+
+  .heading {
+
+    font-size: 17px;
+
+    letter-spacing: 3px;
+
+  }
+
+  .subtitle {
+
+    font-size: 8px;
+
+  }
+
+  .coming-title {
+
+    font-size: 34px;
+
+    letter-spacing: 6px;
+
+  }
+
+  .description {
+
+    font-size: 12px;
+
+  }
+
+  .loader-box {
+
+    height: 280px;
+
+  }
+
+  .circle-wrapper {
+
+    transform: scale(0.9);
+
+  }
+
+  .buttons button {
+
+    padding: 9px 15px;
+
+    font-size: 10px;
+
+  }
+
+  .initialize-btn {
+
+    font-size: 9px;
+
+    padding: 11px 16px;
+
+  }
+
+}
+
+/* =====================================
+   SMALL MOBILE
+===================================== */
+
+@media (max-width: 350px) {
+
+  .heading {
+
+    font-size: 14px;
+
+    letter-spacing: 2px;
+
+  }
+
+  .coming-title {
+
+    font-size: 29px;
+
+  }
+
+  .buttons {
+
+    gap: 8px;
+
+  }
+
+  .buttons button {
+
+    padding: 8px 12px;
+
+  }
+
+}
+
+/* =====================================
+   REDUCED MOTION ACCESSIBILITY
+===================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .coming-title,
+  .loader-card::before,
+  .coming-card::before {
+
+    animation: none;
+
+  }
+
+}
