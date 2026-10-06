@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import {
   motion,
@@ -8,7 +7,7 @@ import {
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(5);
+  const [count, setCount] = useState(10);
   const [isRunning, setIsRunning] = useState(true);
   const [completed, setCompleted] = useState(false);
 
@@ -36,7 +35,7 @@ function App() {
 
   // RESET
   const handleReset = () => {
-    setCount(5);
+    setCount(10);
     setCompleted(false);
     setIsRunning(true);
   };
